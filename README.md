@@ -12,4 +12,5 @@ Now visit
   * `localhost:4000/bar`
   * `localhost:4000/custom`
 
-I would expect all 3 to show up in AppSignal, but only /foo and /bar show up.
+I would expect all 3 to show up in AppSignal, but only /foo and /bar show up while /custom is
+missing in action.
