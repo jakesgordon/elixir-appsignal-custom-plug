@@ -4,8 +4,7 @@ config :chip, ChipWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "nDxE+2coRge5RIz3OVsP/VmKw1pN2Rya2xFStnS+IiLQftDcPdL2XbaOpWYLzOoC",
   render_errors: [view: ChipWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Chip.PubSub,
-  live_view: [signing_salt: "zEimAHwp"]
+  pubsub_server: Chip.PubSub
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
