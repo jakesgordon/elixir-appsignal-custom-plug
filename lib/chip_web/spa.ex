@@ -10,7 +10,7 @@ defmodule ChipWeb.Spa do
     Appsignal.instrument "Chip.Spa", fn ->
       Process.sleep(1000)
       conn
-      |> Conn.send_resp(200, "SPA!")
+      |> Conn.send_resp(200, "special case handling of /spa endpoint")
       |> Conn.halt
     end
   end
