@@ -6,20 +6,16 @@ defmodule ChipWeb.Spa do
     opts
   end
 
-  def call(conn, _opts \\ []) do
-    conn
-    |> route
+  def call(%Conn{ path_info: [ "spa" ] } = conn, _opts) do
+    Appsignal.instrument "Chip.Spa", fn ->
+      Process.sleep(1000)
+      conn
+      |> Conn.send_resp(200, "SPA!")
+      |> Conn.halt
+    end
   end
 
-  defp route(%Conn{ path_info: [ "spa" ] } = conn) do
-    IO.puts "************ RENDER SPA ***************"
-    Process.sleep(1000)
-    conn
-    |> Conn.send_resp(200, "SPA!")
-    |> Conn.halt
-  end
-
-  defp route(%Conn{} = conn) do
+  def call(%Conn{} = conn, _opts) do
     conn
   end
 
