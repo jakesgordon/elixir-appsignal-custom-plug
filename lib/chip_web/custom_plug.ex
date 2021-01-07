@@ -11,8 +11,13 @@ defmodule ChipWeb.CustomPlug do
     Appsignal.instrument "ChipWeb.CustomPlug", fn ->
       Process.sleep(1000)
       conn
-      |> Conn.send_resp(200, "special case handling of /custom endpoint")
-      |> Conn.halt
+
+      # By halting the response the rest of the plugs aren't called anymore,
+      # so the parent span (the one started by Phoenix in this example) is never closed.
+      # The child span, which _is_ closed, therefor gets dropped.
+
+      # |> Conn.send_resp(200, "special case handling of /custom endpoint")
+      # |> Conn.halt
     end
   end
 
@@ -20,4 +25,4 @@ defmodule ChipWeb.CustomPlug do
     conn
   end
 
-end 
+end
