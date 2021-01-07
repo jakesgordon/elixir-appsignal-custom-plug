@@ -13,4 +13,9 @@ defmodule ChipWeb.PageController do
     render(conn, "bar.html")
   end
 
+  def custom(conn, _params) do
+    conn
+  |> send_resp(201, "special case handling of /custom endpoint")
+  end
+
 end

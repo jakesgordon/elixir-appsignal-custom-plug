@@ -14,6 +14,7 @@ defmodule ChipWeb.Router do
     get "/",    PageController, :index
     get "/foo", PageController, :foo
     get "/bar", PageController, :bar
+    get "/custom", PageController, :custom
   end
 
 end
